@@ -360,7 +360,6 @@
 "Assets/Sprites/Beautiful Interface/Editor/ReplaceElements.cs"
 "Assets/Sprites/Beautiful Interface/Editor/TextUIEditor.cs"
 "Assets/Sprites/Beautiful Interface/Editor/ToggleUIEditor.cs"
-"Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs"
 -langversion:8.0
 
 /deterministic

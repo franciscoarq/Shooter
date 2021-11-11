@@ -14,31 +14,55 @@ public class PlayerMovement : MonoBehaviour
 	[Range(0, 360)]
 	public int rapidezRotacion;
 
-	private Rigidbody rb;
+	private Rigidbody _rb;
+
+	private Animator _animator;
 
 	void Start()
 	{
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Confined;
 
-		rb = GetComponent<Rigidbody>();
+		_rb = GetComponent<Rigidbody>();
+		_animator = GetComponent<Animator>();
 	}
 
 	void Update()
 	{
-		float distancia = velocidad * Time.deltaTime;
+		float espacio = velocidad * Time.deltaTime;
 
 		float horizontal = Input.GetAxis("Horizontal");
 		float vertical = Input.GetAxis("Vertical");
 
 		Vector3 direccion = new Vector3(horizontal, 0, vertical);
 		//transform.Translate(direccion.normalized * distancia);
-		rb.AddRelativeForce(direccion.normalized * distancia);
+		_rb.AddRelativeForce(direccion.normalized * espacio);
 
 		float angulo = rapidezRotacion * Time.deltaTime;
 		float rotacion = Input.GetAxis("Rotar X");
 		//transform.Rotate(0, rotacion * angulo, 0);
-		rb.AddRelativeTorque(0, rotacion * angulo, 0);
+		_rb.AddRelativeTorque(0, rotacion * angulo, 0);
+
+		_animator.SetFloat("Velocidad", _rb.velocity.magnitude);
+
+		/* _animator.SetFloat("MoverX", horizontal);
+		_animator.SetFloat("MoverY", vertical);
+
+		if (Input.GetKey(KeyCode.RightShift))
+		{
+			_animator.SetFloat("Velocidad", _rb.velocity.magnitude);
+		}
+		else
+		{
+			if (Mathf.Abs(horizontal) < 0.01f && Mathf.Abs(vertical) < 0.01f)
+			{
+				_animator.SetFloat("Velocidad", 0);
+			}
+			else
+			{
+				_animator.SetFloat("Velocidad", 0.15f);
+			}
+		} */
 
 		/* if (Input.GetKey(KeyCode.UpArrow))
 		{

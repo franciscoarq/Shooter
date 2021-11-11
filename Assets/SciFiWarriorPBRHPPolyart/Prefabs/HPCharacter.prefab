@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5379469183472183373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4827501096002652287}
+  m_Layer: 6
+  m_Name: Shooting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4827501096002652287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379469183472183373}
+  m_LocalRotation: {x: 0.00000007194466, y: -0.7071069, z: 0.00000011012888, w: 0.70710677}
+  m_LocalPosition: {x: -109.7, y: 4.2, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7673487251499544684}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &7673487251499248672
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7673487251499544598}
+  - component: {fileID: 8967381585142962854}
   - component: {fileID: 7673487251510747448}
   m_Layer: 0
   m_Name: AssaultRifle
@@ -602,6 +633,22 @@ Transform:
   m_Father: {fileID: 7673487251499544664}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8967381585142962854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673487251499248694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816e803ad5dd547328ec8debf0ac02ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratioDisparo: 1
+  shootingPoint: {fileID: 5379469183472183373}
+  fireEffect: {fileID: 4727029580373402792, guid: 289f07f562dc94636bf69a2bfdf50782, type: 3}
+  shootSound: {fileID: 827911963877712031, guid: 66293a41a40374a16aa5bd78734a36b1, type: 3}
 --- !u!137 &7673487251510747448
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -2039,8 +2086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7673487251499544664}
-  - component: {fileID: 8026848063646216394}
-  - component: {fileID: 8787768950502566646}
+  - component: {fileID: 1950882833261153853}
   - component: {fileID: 7673487250857332701}
   m_Layer: 0
   m_Name: HPCharacter
@@ -2070,7 +2116,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8026848063646216394
+--- !u!114 &1950882833261153853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2079,22 +2125,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7673487251499248760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0a3ba470a694e8ea3ff09cf5a1964a, type: 3}
+  m_Script: {fileID: 11500000, guid: af2db2a1755fb4c25832bf7ca598c287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8787768950502566646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7673487251499248760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd854f7bc8c24fb6886cf1250526d37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidad: 0
 --- !u!95 &7673487250857332701
 Animator:
   serializedVersion: 3
@@ -2416,7 +2449,8 @@ Transform:
   m_LocalRotation: {x: -0.0031178175, y: 0.0071248533, z: 0.40088162, w: 0.91609687}
   m_LocalPosition: {x: -9.913989, y: -10.731702, z: 9.284221}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4827501096002652287}
   m_Father: {fileID: 7673487251499544592}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool InstanciaCompartida;
+    public static ObjectPool SharedInstance;
+
     public GameObject prefab;
+
     public List<GameObject> piscina;
+
     public int cantidad;
 
     void Awake(){
-        if (InstanciaCompartida == null)
+        if (SharedInstance == null)
         {
-            InstanciaCompartida = this;
+            SharedInstance = this;
         }
         else
         {
@@ -45,5 +48,4 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
-
 }

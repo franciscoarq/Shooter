@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-  [Tooltip("Prefab a disparar")]
+    [Tooltip("Prefab a disparar")]
 
-  public GameObject shootingPoint;
+    private Animator _animator;
 
-  void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+    public int bulletsAmount;
+
+    public Weapon arma;
+
+    private void Awake()
     {
-      GameObject bala = ObjectPool.InstanciaCompartida.PrimeraBalaEnPiscina();
-      bala.layer = LayerMask.NameToLayer("Bala Jugador");
-      bala.transform.position = shootingPoint.transform.position;
-      bala.transform.rotation = shootingPoint.transform.rotation;
-      bala.SetActive(true);
+        _animator = GetComponent<Animator>();
     }
-  }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && Time.timeScale > 0)
+        {
+            _animator.SetBool("Shot Bullet Bol", true);
+
+            if (bulletsAmount > 0 && arma.DispararBala("Bala Jugador", 0.2f))
+            {
+                bulletsAmount--;
+                if (bulletsAmount < 0)
+                {
+                    bulletsAmount = 0;
+                }
+            }
+        }
+        else
+        {
+            _animator.SetBool("Shot Bullet Bol", false);
+        }
+    }
 }

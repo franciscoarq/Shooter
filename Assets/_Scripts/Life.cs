@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Life : MonoBehaviour
 {
     [SerializeField]
     private float cantidad;
+
+    public float maximumLife = 100.0f;
+
+    public UnityEvent onDeath;
 
     public float Cantidad
     {
@@ -15,19 +20,13 @@ public class Life : MonoBehaviour
             cantidad = value;
             if (cantidad <= 0)
             {
-                Animator anim = GetComponent<Animator>();
-                anim.SetTrigger("Play Die");
-
-                Invoke("PayDestruccion", 1);
-
-                Destroy(gameObject, 2);
+                onDeath.Invoke();
             }
         }
     }
 
-    void PayDestruccion()
+    private void Awake()
     {
-        ParticleSystem explosion = GetComponentInChildren<ParticleSystem>();
-        explosion.Play();
+        cantidad = maximumLife;
     }
 }
